@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Authentication\" />
+    <Folder Include="Users\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Building Blocks\Joyle.BuildingBlocks.Application\Joyle.BuildingBlocks.Application.csproj" />
+    <ProjectReference Include="..\Joyle.Accounts.Domain\Joyle.Accounts.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
