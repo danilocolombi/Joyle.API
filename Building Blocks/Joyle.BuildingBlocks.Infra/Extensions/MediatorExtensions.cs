@@ -8,7 +8,7 @@ namespace Joyle.BuildingBlocks.Infra.Extensions
 {
     public static class MediatorExtensions
     {
-        public static async Task PublishEvents<T>(this IMediatorHandler mediator, T ctx) where T : DbContext
+        public static async Task PublishEventsAsync<T>(this IMediatorHandler mediator, T ctx) where T : DbContext
         {
             var domainEntities = ctx.ChangeTracker
                 .Entries<Entity>()

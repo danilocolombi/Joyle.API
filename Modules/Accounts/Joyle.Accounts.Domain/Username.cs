@@ -6,13 +6,12 @@ namespace Joyle.Accounts.Domain
 {
     public class Username : ValueObject, IEquatable<Username>
     {
-        private const int MaxLength = 30;
-        private const int MinLength = 2;
-        public readonly string Specifications = @$"The username should be between {MinLength} and {MaxLength} characters and
+        public const int MaxLength = 30;
+        public const int MinLength = 2;
+        public static readonly string Specifications = @$"The username should be between {MinLength} and {MaxLength} characters and
         it can't contain empty spaces";
 
         public string Value { get; private set; }
-
 
         protected Username() { }
 

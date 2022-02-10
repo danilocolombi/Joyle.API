@@ -7,10 +7,10 @@ namespace Joyle.Accounts.Domain
 {
     public class Email : ValueObject, IEquatable<Email>
     {
-        private const int MaxLength = 100;
-        private const int MinLength = 5;
-        private const string Regex = @"^(?("")("".+?""@)|(([0-9a-zA-Z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-zA-Z])@))(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,6}))$";
-        public readonly string Specifications = $"The email length should be between {MinLength} and {MaxLength} characters";
+        public const int MaxLength = 100;
+        public const int MinLength = 5;
+        public const string Regex = @"^(?("")("".+?""@)|(([0-9a-zA-Z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-zA-Z])@))(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,6}))$";
+        public static readonly string Specifications = $"The email length should be between {MinLength} and {MaxLength} characters";
 
         public string Address { get; private set; }
 

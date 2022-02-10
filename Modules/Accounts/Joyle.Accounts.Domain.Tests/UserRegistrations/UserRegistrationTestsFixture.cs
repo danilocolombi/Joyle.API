@@ -26,8 +26,8 @@ namespace Joyle.Accounts.Domain.Tests.UserRegistrations
                 CreateFakeUrl());
         }
 
-        public string CreateFakeUsername()        
-            => new Faker().Internet.UserName();
+        public Username CreateFakeUsername()        
+            => new Username(new Faker().Internet.UserName());
 
         public string CreateFakeFullName()
             => new Faker().Person.FullName;

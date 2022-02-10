@@ -1,5 +1,7 @@
+using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using System.IO;
 
 namespace Joyle.API
 {
@@ -7,14 +9,17 @@ namespace Joyle.API
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
-        }
+            var host = Host.CreateDefaultBuilder(args)
+                     .UseServiceProviderFactory(new AutofacServiceProviderFactory())
+                     .ConfigureWebHostDefaults(webHostBuilder => {
+                         webHostBuilder
+                          .UseContentRoot(Directory.GetCurrentDirectory())
+                          .UseIISIntegration()
+                          .UseStartup<Startup>();
+                     })
+                     .Build();
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+            host.Run();
+        }
     }
 }

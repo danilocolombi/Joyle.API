@@ -6,18 +6,18 @@ namespace Joyle.Accounts.Domain.UserRegistrations
 {
     public class UserRegistration : Entity, IAggregateRoot
     {
-        public string Username { get; private set; }
+        public Username Username { get; private set; }
         public string FullName { get; private set; }
         public Email Email { get; private set; }
         public string Password { get; private set; }
         public DateTime RegistrationDate { get; private set; }
-        public DateTime ConfirmationDate { get; private set; }
+        public DateTime? ConfirmationDate { get; private set; }
         public UserRegistrationStatus Status { get; set; }
 
         protected UserRegistration() { }
 
         public static UserRegistration RegisterNewUser(
-            string username,
+            Username username,
             string fullName,
             Email email,
             string password,
@@ -28,7 +28,7 @@ namespace Joyle.Accounts.Domain.UserRegistrations
         }
 
         private UserRegistration(
-            string username,
+            Username username,
             string fullName,
             Email email,
             string password,
