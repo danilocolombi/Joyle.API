@@ -1,4 +1,5 @@
 ﻿using Joyle.Accounts.Domain.UserRegistrations;
+using Joyle.Accounts.Domain.Users;
 using Joyle.BuildingBlocks.Application.Mediator;
 using Joyle.BuildingBlocks.Domain;
 using Joyle.BuildingBlocks.Infra.Extensions;
@@ -20,6 +21,7 @@ namespace Joyle.Accounts.Infra.Data
         }
 
         public DbSet<UserRegistration> UserRegistrations { get; set;  }
+        public DbSet<User> Users { get; set;  }
 
         public async Task<bool> Commit()
         {
@@ -31,9 +33,9 @@ namespace Joyle.Accounts.Infra.Data
 
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
 

@@ -1,20 +1,20 @@
 ﻿using Joyle.Accounts.Domain;
-using Joyle.Accounts.Domain.UserRegistrations;
+using Joyle.Accounts.Domain.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Joyle.Accounts.Infra.Data.UserRegistrations
+namespace Joyle.Accounts.Infra.Data.Users
 {
-    internal class UserRegistrationsMapping : IEntityTypeConfiguration<UserRegistration>
+    public class UserMapping : IEntityTypeConfiguration<User>
     {
-        public void Configure(EntityTypeBuilder<UserRegistration> builder)
+        public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.HasKey(user => user.Id);
 
             builder.Property(user => user.Id)
                 .ValueGeneratedNever();
 
-            builder.ToTable("UserRegistration");
+            builder.ToTable("User");
 
             builder.OwnsOne(user => user.Username, username =>
             {
@@ -33,10 +33,7 @@ namespace Joyle.Accounts.Infra.Data.UserRegistrations
                 email.Property(em => em.Address)
                     .IsRequired()
                     .HasColumnName("Email")
-                    .HasColumnType($"VARCHAR({Username.MaxLength})");
-
-                email.HasIndex(em => em.Address)
-                    .IsUnique();
+                    .HasColumnType($"VARCHAR({Email.MaxLength})");
 
             }).Navigation(user => user.Email).IsRequired();
 
@@ -48,21 +45,8 @@ namespace Joyle.Accounts.Infra.Data.UserRegistrations
                 .IsRequired()
                 .HasColumnType("VARCHAR(250)");
 
-            builder.Property(user => user.ConfirmationDate)
-                .IsRequired(false);
-
-            builder.Property(user => user.RegistrationDate)
+            builder.Property(user => user.IsActive)
                 .IsRequired();
-
-
-            builder.OwnsOne(user => user.Status, status =>
-            {
-                status.Property(s => s.Value)
-                    .IsRequired()
-                    .HasColumnName("Status")
-                    .HasColumnType($"varchar(30)");
-
-            }).Navigation(user => user.Status).IsRequired();
         }
     }
 }

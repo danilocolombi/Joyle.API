@@ -1,9 +1,11 @@
-﻿using Joyle.Accounts.Application.UserRegistrations.RegisterNewUser;
+﻿using Joyle.Accounts.Application.UserRegistrations.ConfirmUserRegistration;
+using Joyle.Accounts.Application.UserRegistrations.RegisterNewUser;
 using Joyle.API.Modules.Accounts.UserRegistrations.Requests;
 using Joyle.BuildingBlocks.Application.Mediator;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
 
 namespace Joyle.API.Modules.Accounts.UserRegistrations
@@ -30,6 +32,16 @@ namespace Joyle.API.Modules.Accounts.UserRegistrations
                 request.Email,
                 request.Password,
                 request.ConfirmationLink));
+
+            return Ok();
+        }
+
+
+        [AllowAnonymous]
+        [HttpPost("{id:Guid}")]
+        public async Task<IActionResult> ConfirmarCadastroUsuario(Guid id)
+        {
+            await _mediator.ExecuteCommandAsync(new ConfirmUserRegistrationCommand(id));
 
             return Ok();
         }

@@ -2,7 +2,9 @@
 using FluentValidation;
 using Joyle.Accounts.Application.UserRegistrations.RegisterNewUser;
 using Joyle.Accounts.Domain.UserRegistrations.Interfaces;
+using Joyle.Accounts.Domain.Users.Interfaces;
 using Joyle.Accounts.Infra.Data.UserRegistrations;
+using Joyle.Accounts.Infra.Data.Users;
 using MediatR;
 using System.Reflection;
 
@@ -24,6 +26,10 @@ namespace Joyle.Accounts.Infra.Configuration
 
             builder.RegisterType<UserRegistrationRepository>()
                 .As<IUserRegistrationRepository>()
+                .InstancePerLifetimeScope();
+
+            builder.RegisterType<UserRepository>()
+                .As<IUserRepository>()
                 .InstancePerLifetimeScope();
         }
     }

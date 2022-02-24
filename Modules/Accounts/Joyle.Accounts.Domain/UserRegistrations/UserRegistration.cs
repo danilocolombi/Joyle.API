@@ -49,5 +49,16 @@ namespace Joyle.Accounts.Domain.UserRegistrations
 
             AddDomainEvent(new NewUserRegisteredDomainEvent(this.Id, this.FullName, this.Email, confirmationLink));
         }
+
+        public void Confirm()
+        {
+            if (Status == UserRegistrationStatus.Confirmed)
+                throw new BusinessRuleValidationException("User already confirmed");
+
+            Status = UserRegistrationStatus.Confirmed;
+            ConfirmationDate = DateTime.Now;
+
+            AddDomainEvent(new UserRegistrationConfirmedDomainEvent(this));
+        }
     }
 }
