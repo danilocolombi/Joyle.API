@@ -1,5 +1,7 @@
-﻿using Joyle.Accounts.Application.Users.InactivateUser;
+﻿using Joyle.Accounts.Application.Users.ChangeUsername;
+using Joyle.Accounts.Application.Users.InactivateUser;
 using Joyle.API.Configuration.Authentication.Services;
+using Joyle.API.Modules.Accounts.Users.Requests;
 using Joyle.BuildingBlocks.Application.Mediator;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -7,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Joyle.API.Modules.Accounts.Users
 {
+    [Route("api/accounts/users")]
     public class UsersController : ControllerBase
     {
         private readonly IMediatorHandler _mediator;
@@ -25,6 +28,19 @@ namespace Joyle.API.Modules.Accounts.Users
             var id = _aspNetUser.GetId();
 
             await _mediator.ExecuteCommandAsync(new InactivateUserCommand(id));
+
+            return Ok();
+        }
+
+        [HttpPut("username")]
+        [Authorize]
+        public async Task<IActionResult> ChangeUsername(ChangeUsernameRequest request)
+        {
+            var id = _aspNetUser.GetId();
+
+            await _mediator.ExecuteCommandAsync(new ChangeUsernameCommand(
+                id,
+                request.Username));
 
             return Ok();
         }

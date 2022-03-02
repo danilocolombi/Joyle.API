@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Joyle.API.Modules.Accounts.Authentication
 {
-    [Route("api/authentication")]
+    [Route("api/accounts/authentication")]
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
@@ -50,6 +50,5 @@ namespace Joyle.API.Modules.Accounts.Authentication
                 }
             });
         }
-
     }
 }

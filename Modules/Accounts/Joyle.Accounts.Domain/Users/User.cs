@@ -44,5 +44,16 @@ namespace Joyle.Accounts.Domain.Users
             IsActive = false;
             InactivationDate = DateTime.Now;
         }
+
+        public void ChangeUsername(Username newUsername, int usersWithThisUsernameCounter)
+        {
+            if (this.Username == newUsername)
+                return;
+
+            if (usersWithThisUsernameCounter > 0)
+                throw new BusinessRuleValidationException("Username must be unique");
+
+            this.Username = newUsername;
+        }
     }
 }
