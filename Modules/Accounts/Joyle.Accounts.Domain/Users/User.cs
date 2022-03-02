@@ -10,15 +10,26 @@ namespace Joyle.Accounts.Domain.Users
         public Email Email { get; private set; }
         public string Password { get; private set; }
         public bool IsActive { get; private set; }
+        public DateTime? InactivationDate { get; set; }
 
         protected User() { }
 
-        public static User CreateUserFromRegistration(Guid id, Username username, string fullName, Email email, string password)
+        public static User CreateUserFromRegistration(
+            Guid id,
+            Username username,
+            string fullName,
+            Email email,
+            string password)
         {
             return new User(id, username, fullName, email, password);
         }
 
-        private User(Guid id, Username username, string fullName, Email email, string password)
+        private User(
+            Guid id,
+            Username username,
+            string fullName,
+            Email email,
+            string password)
         {
             this.Id = id;
             Username = username;
@@ -26,6 +37,12 @@ namespace Joyle.Accounts.Domain.Users
             Email = email;
             Password = password;
             IsActive = true;
+        }
+
+        public void Inactivate()
+        {
+            IsActive = false;
+            InactivationDate = DateTime.Now;
         }
     }
 }

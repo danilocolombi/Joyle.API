@@ -47,6 +47,9 @@ namespace Joyle.Accounts.Infra.Data.Users
 
             builder.Property(user => user.IsActive)
                 .IsRequired();
+
+            builder.Property(user => user.InactivationDate)
+                .IsRequired(false);
         }
     }
 }

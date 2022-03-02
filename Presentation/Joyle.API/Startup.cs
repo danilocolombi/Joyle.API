@@ -1,6 +1,7 @@
 using Autofac;
 using Joyle.Accounts.Infra.Configuration;
 using Joyle.API.Configuration;
+using Joyle.API.Configuration.Authentication;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,6 +31,8 @@ namespace Joyle.API
         {
             services.AddApiConfiguration(Configuration);
 
+            services.AddAuthenticationConfiguration(Configuration);
+
             services.AddMediatR(typeof(Startup));
         }
 
@@ -37,6 +40,7 @@ namespace Joyle.API
         {
             builder.RegisterModule(new AccountsModule());
             builder.RegisterModule(new ApplicationModule(Configuration));
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

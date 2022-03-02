@@ -1,4 +1,5 @@
 ﻿using Bogus;
+using Joyle.Accounts.Domain.Tests.Core;
 using Joyle.Accounts.Domain.UserRegistrations;
 using Joyle.BuildingBlocks.Domain;
 using System;
@@ -13,7 +14,7 @@ namespace Joyle.Accounts.Domain.Tests.UserRegistrations
 
     }
 
-    public class UserRegistrationTestsFixture
+    public class UserRegistrationTestsFixture: AccountsTestsFixture
     {
         public UserRegistration CreateFakeUserRegistration()
         {
@@ -25,18 +26,6 @@ namespace Joyle.Accounts.Domain.Tests.UserRegistrations
                 usersWithThisLoginCounter: 0,
                 CreateFakeUrl());
         }
-
-        public Username CreateFakeUsername()        
-            => new Username(new Faker().Internet.UserName());
-
-        public string CreateFakeFullName()
-            => new Faker().Person.FullName;
-
-        public Email CreateFakeEmail()
-           => new Email(new Faker().Internet.Email());
-
-        public string CreateFakePassword()
-            => new Faker().Internet.Password();
 
         public string CreateFakeUrl()
             => new Faker().Internet.Url();

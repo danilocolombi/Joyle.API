@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Joyle.API.Configuration.Authentication.Services;
 using Joyle.BuildingBlocks.Application.Data;
 using Joyle.BuildingBlocks.Application.Decorators;
 using Joyle.BuildingBlocks.Application.Emails;
@@ -6,6 +7,7 @@ using Joyle.BuildingBlocks.Application.Mediator;
 using Joyle.BuildingBlocks.Infra.Data;
 using Joyle.BuildingBlocks.Infra.Emails;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 
 namespace Joyle.API.Configuration
@@ -21,6 +23,19 @@ namespace Joyle.API.Configuration
 
         protected override void Load(ContainerBuilder builder)
         {
+
+            builder.RegisterType<HttpContextAccessor>()
+                .As<IHttpContextAccessor>()
+                .SingleInstance();
+
+            builder.RegisterType<AspNetUser>()
+                .As<IAspNetUser>()
+                .InstancePerLifetimeScope();
+
+            builder.RegisterType<JwtTokenGeneratorService>()
+                .As<IJwtTokenGeneratorService>()
+                .InstancePerLifetimeScope();
+
             builder.RegisterType<MediatorHandler>()
                 .As<IMediatorHandler>()
                 .InstancePerLifetimeScope();
