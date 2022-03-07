@@ -23,7 +23,7 @@ namespace Joyle.Accounts.Application.PasswordRecoveries.RecoverPassword
             if (user == null)
                 throw new CommandInvalidException("Invalid user");
 
-            user.ChangePassword(notification.Password);
+            user.ResetPassword(notification.Password);
 
             await _userRepository.UnitOfWork.Commit();
         }

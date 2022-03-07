@@ -97,5 +97,17 @@ namespace Joyle.Accounts.Domain.Tests.Users
 
             user.ChangeUsername(newUsername, usersWithThisUsernameCounter: 0);
         }
+
+        [Fact(DisplayName = "Reset password, should update the password")]
+        [Trait("Category", "Reset Password")]
+        public void User_ResetPassword_ShouldUpdatePassword()
+        {
+            var user = _testsFixture.CreateFakeUser();
+            var newPassword = _testsFixture.CreateFakePassword();
+
+            user.ResetPassword(newPassword);
+
+            user.Password.Should().Be(newPassword);
+        }
     }
 }

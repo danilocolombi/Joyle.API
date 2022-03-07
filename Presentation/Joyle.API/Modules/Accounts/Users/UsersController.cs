@@ -1,5 +1,6 @@
 ﻿using Joyle.Accounts.Application.Users.ActivateUser;
 using Joyle.Accounts.Application.Users.ChangeUsername;
+using Joyle.Accounts.Application.Users.ChangeUserPassword;
 using Joyle.Accounts.Application.Users.InactivateUser;
 using Joyle.API.Configuration.Authentication.Services;
 using Joyle.API.Modules.Accounts.Users.Requests;
@@ -53,6 +54,20 @@ namespace Joyle.API.Modules.Accounts.Users
             await _mediator.ExecuteCommandAsync(new ChangeUsernameCommand(
                 id,
                 request.Username));
+
+            return Ok();
+        }
+
+        [HttpPut("password")]
+        [Authorize]
+        public async Task<IActionResult> ChangeUserPassword([FromBody] ChangeUserPasswordRequest request)
+        {
+            var id = _aspNetUser.GetId();
+
+            await _mediator.ExecuteCommandAsync(new ChangeUserPasswordCommand(
+                id,
+                request.CurrentPassword,
+                request.NewPassword));
 
             return Ok();
         }

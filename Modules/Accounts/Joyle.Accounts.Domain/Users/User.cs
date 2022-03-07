@@ -68,7 +68,7 @@ namespace Joyle.Accounts.Domain.Users
             this.Username = newUsername;
         }
 
-        public void ChangePassword(string newPassword)
+        public void ResetPassword(string newPassword)
         {
             this.Password = newPassword;
         }
