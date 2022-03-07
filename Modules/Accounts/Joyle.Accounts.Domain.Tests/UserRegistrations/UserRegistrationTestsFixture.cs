@@ -26,18 +26,5 @@ namespace Joyle.Accounts.Domain.Tests.UserRegistrations
                 usersWithThisLoginCounter: 0,
                 CreateFakeUrl());
         }
-
-        public string CreateFakeUrl()
-            => new Faker().Internet.Url();
-
-        public T AssertPublishedDomainEvent<T>(Entity entity) where T : DomainEvent
-        {
-            var domainEvent = entity?.domainEvents.FirstOrDefault(e => e is T);
-
-            if (domainEvent == null)
-                throw new Exception($"The event {nameof(T)} wasn't published");
-
-            return (T)domainEvent;
-        }
     }
 }

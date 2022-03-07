@@ -41,8 +41,20 @@ namespace Joyle.Accounts.Domain.Users
 
         public void Inactivate()
         {
+            if (!IsActive)
+                throw new BusinessRuleValidationException("User is already inactive");
+
             IsActive = false;
             InactivationDate = DateTime.Now;
+        }
+
+        public void Activate()
+        {
+            if (IsActive)
+                throw new BusinessRuleValidationException("User is already active");
+
+            IsActive = true;
+            InactivationDate = null;
         }
 
         public void ChangeUsername(Username newUsername, int usersWithThisUsernameCounter)
@@ -54,6 +66,11 @@ namespace Joyle.Accounts.Domain.Users
                 throw new BusinessRuleValidationException("Username must be unique");
 
             this.Username = newUsername;
+        }
+
+        public void ChangePassword(string newPassword)
+        {
+            this.Password = newPassword;
         }
     }
 }

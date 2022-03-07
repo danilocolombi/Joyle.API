@@ -27,6 +27,42 @@ namespace Joyle.Accounts.Domain.Tests.Users
             user.InactivationDate.Should().BeCloseTo(DateTime.Now, TimeSpan.FromSeconds(10));
         }
 
+        [Fact(DisplayName = "Inactivate User who is already inactive, should throw an exception")]
+        [Trait("Category", "Inactive")]
+        public void User_InactivateUser_ShouldThrowAnException()
+        {
+            var user = _testsFixture.CreateFakeUser();
+            user.Inactivate();
+
+            Action action = () => user.Inactivate();
+
+            action.Should().Throw<BusinessRuleValidationException>().WithMessage("User is already inactive");
+        }
+
+        [Fact(DisplayName = "Activate User, should change IsActive to true and set InactivationDate to null")]
+        [Trait("Category", "Activate")]
+        public void User_Activate_ShouldChangeIsActive()
+        {
+            var user = _testsFixture.CreateFakeUser();
+            user.Inactivate();
+
+            user.Activate();
+
+            user.IsActive.Should().BeTrue();
+            user.InactivationDate.Should().BeNull();
+        }
+
+        [Fact(DisplayName = "Activate User who's already active, should throw an exception")]
+        [Trait("Category", "Activate")]
+        public void User_Activate_ShouldThrowAnException()
+        {
+            var user = _testsFixture.CreateFakeUser();
+
+            Action action = () => user.Activate();
+
+            action.Should().Throw<BusinessRuleValidationException>().WithMessage("User is already active");
+        }
+
         [Fact(DisplayName = "Change Username, should update Username")]
         [Trait("Category", "Change Username")]
         public void User_ChangeUsername_ShouldChangeUpdateUsername()
@@ -59,7 +95,7 @@ namespace Joyle.Accounts.Domain.Tests.Users
             var user = _testsFixture.CreateFakeUser();
             var newUsername = user.Username;
 
-           user.ChangeUsername(newUsername, usersWithThisUsernameCounter: 0);
+            user.ChangeUsername(newUsername, usersWithThisUsernameCounter: 0);
         }
     }
 }

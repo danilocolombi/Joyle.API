@@ -1,4 +1,5 @@
-﻿using Joyle.Accounts.Domain.UserRegistrations;
+﻿using Joyle.Accounts.Domain.PasswordRecoveries;
+using Joyle.Accounts.Domain.UserRegistrations;
 using Joyle.Accounts.Domain.Users;
 using Joyle.BuildingBlocks.Application.Mediator;
 using Joyle.BuildingBlocks.Domain;
@@ -22,6 +23,7 @@ namespace Joyle.Accounts.Infra.Data
 
         public DbSet<UserRegistration> UserRegistrations { get; set;  }
         public DbSet<User> Users { get; set;  }
+        public DbSet<PasswordRecovery> PasswordRecoveries { get; set;  }
 
         public async Task<bool> Commit()
         {

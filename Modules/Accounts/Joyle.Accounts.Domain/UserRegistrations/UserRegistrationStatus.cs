@@ -22,24 +22,24 @@ namespace Joyle.Accounts.Domain.UserRegistrations
 
         public override bool Equals(object obj)
         {
-            if (obj is Username otherUsername)
-                return Equals(otherUsername);
+            if (obj is UserRegistrationStatus otherstatus)
+                return Equals(otherstatus);
 
             return false;
         }
 
-        public bool Equals([AllowNull] UserRegistrationStatus otherUsername)
+        public bool Equals([AllowNull] UserRegistrationStatus otherstatus)
         {
-            if (otherUsername == null)
+            if (otherstatus == null)
                 return false;
 
-            return string.Equals(this.Value, otherUsername.Value);
+            return string.Equals(this.Value, otherstatus.Value);
         }
 
-        public static bool operator ==(UserRegistrationStatus username1, UserRegistrationStatus username2)
-            => ReferenceEquals(username1, null) ? ReferenceEquals(username2, null) : username1.Equals(username2);
+        public static bool operator ==(UserRegistrationStatus status1, UserRegistrationStatus status2)
+            => ReferenceEquals(status1, null) ? ReferenceEquals(status2, null) : status1.Equals(status2);
 
-        public static bool operator !=(UserRegistrationStatus username1, UserRegistrationStatus username2)
-            => !(username1 == username2);
+        public static bool operator !=(UserRegistrationStatus status1, UserRegistrationStatus status2)
+            => !(status1 == status2);
     }
 }

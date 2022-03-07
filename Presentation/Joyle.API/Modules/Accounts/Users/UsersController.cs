@@ -1,4 +1,5 @@
-﻿using Joyle.Accounts.Application.Users.ChangeUsername;
+﻿using Joyle.Accounts.Application.Users.ActivateUser;
+using Joyle.Accounts.Application.Users.ChangeUsername;
 using Joyle.Accounts.Application.Users.InactivateUser;
 using Joyle.API.Configuration.Authentication.Services;
 using Joyle.API.Modules.Accounts.Users.Requests;
@@ -21,13 +22,24 @@ namespace Joyle.API.Modules.Accounts.Users
             _aspNetUser = aspNetUser;
         }
 
-        [HttpPut("inactive")]
+        [HttpPut("inactivation")]
         [Authorize]
         public async Task<IActionResult> Inactivate()
         {
             var id = _aspNetUser.GetId();
 
             await _mediator.ExecuteCommandAsync(new InactivateUserCommand(id));
+
+            return Ok();
+        }
+
+        [HttpPut("activation")]
+        [Authorize]
+        public async Task<IActionResult> Activate()
+        {
+            var id = _aspNetUser.GetId();
+
+            await _mediator.ExecuteCommandAsync(new ActivateUserCommand(id));
 
             return Ok();
         }

@@ -1,4 +1,7 @@
 ﻿using Bogus;
+using Joyle.BuildingBlocks.Domain;
+using System;
+using System.Linq;
 
 namespace Joyle.Accounts.Domain.Tests.Core
 {
@@ -15,5 +18,18 @@ namespace Joyle.Accounts.Domain.Tests.Core
 
         public string CreateFakePassword()
             => new Faker().Internet.Password();
+
+        public string CreateFakeUrl()
+            => new Faker().Internet.Url();
+
+        public T AssertPublishedDomainEvent<T>(Entity entity) where T : DomainEvent
+        {
+            var domainEvent = entity?.domainEvents.FirstOrDefault(e => e is T);
+
+            if (domainEvent == null)
+                throw new Exception($"The event {nameof(T)} wasn't published");
+
+            return (T)domainEvent;
+        }
     }
 }

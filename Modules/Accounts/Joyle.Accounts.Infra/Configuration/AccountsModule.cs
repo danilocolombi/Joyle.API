@@ -1,8 +1,10 @@
 ﻿using Autofac;
 using FluentValidation;
 using Joyle.Accounts.Application.UserRegistrations.RegisterNewUser;
+using Joyle.Accounts.Domain.PasswordRecoveries.Interfaces;
 using Joyle.Accounts.Domain.UserRegistrations.Interfaces;
 using Joyle.Accounts.Domain.Users.Interfaces;
+using Joyle.Accounts.Infra.Data.PasswordRecoveries;
 using Joyle.Accounts.Infra.Data.UserRegistrations;
 using Joyle.Accounts.Infra.Data.Users;
 using MediatR;
@@ -30,6 +32,10 @@ namespace Joyle.Accounts.Infra.Configuration
 
             builder.RegisterType<UserRepository>()
                 .As<IUserRepository>()
+                .InstancePerLifetimeScope();
+
+            builder.RegisterType<PasswordRecoveryRepository>()
+                .As<IPasswordRecoveryRepository>()
                 .InstancePerLifetimeScope();
         }
     }
