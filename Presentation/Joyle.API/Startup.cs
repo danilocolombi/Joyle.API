@@ -2,6 +2,7 @@ using Autofac;
 using Joyle.Accounts.Infra.Configuration;
 using Joyle.API.Configuration;
 using Joyle.API.Configuration.Authentication;
+using Joyle.Games.Infra.Configuration;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -39,6 +40,7 @@ namespace Joyle.API
         public void ConfigureContainer(ContainerBuilder builder)
         {
             builder.RegisterModule(new AccountsModule());
+            builder.RegisterModule(new GamesModule());
             builder.RegisterModule(new ApplicationModule(Configuration));
 
         }

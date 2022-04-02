@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 namespace Joyle.API.Modules.Accounts.Users
 {
     [Route("api/accounts/users")]
+    [ApiController]
+    [Authorize]
     public class UsersController : ControllerBase
     {
         private readonly IMediatorHandler _mediator;
@@ -23,8 +25,7 @@ namespace Joyle.API.Modules.Accounts.Users
             _aspNetUser = aspNetUser;
         }
 
-        [HttpPut("inactivation")]
-        [Authorize]
+        [HttpPatch("inactivation")]
         public async Task<IActionResult> Inactivate()
         {
             var id = _aspNetUser.GetId();
@@ -34,8 +35,7 @@ namespace Joyle.API.Modules.Accounts.Users
             return Ok();
         }
 
-        [HttpPut("activation")]
-        [Authorize]
+        [HttpPatch("activation")]
         public async Task<IActionResult> Activate()
         {
             var id = _aspNetUser.GetId();
@@ -45,8 +45,7 @@ namespace Joyle.API.Modules.Accounts.Users
             return Ok();
         }
 
-        [HttpPut("username")]
-        [Authorize]
+        [HttpPatch("username")]
         public async Task<IActionResult> ChangeUsername(ChangeUsernameRequest request)
         {
             var id = _aspNetUser.GetId();
@@ -58,8 +57,7 @@ namespace Joyle.API.Modules.Accounts.Users
             return Ok();
         }
 
-        [HttpPut("password")]
-        [Authorize]
+        [HttpPatch("password")]
         public async Task<IActionResult> ChangeUserPassword([FromBody] ChangeUserPasswordRequest request)
         {
             var id = _aspNetUser.GetId();

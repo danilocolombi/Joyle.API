@@ -4,4 +4,9 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Building Blocks\Joyle.BuildingBlocks.Application\Joyle.BuildingBlocks.Application.csproj" />
+    <ProjectReference Include="..\Joyle.Games.Domain\Joyle.Games.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

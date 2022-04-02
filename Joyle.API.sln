@@ -55,7 +55,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Joyle.BuildingBlocks.Domain
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Joyle.BuildingBlocks.Infra", "Building Blocks\Joyle.BuildingBlocks.Infra\Joyle.BuildingBlocks.Infra.csproj", "{291F9B92-1613-4C78-8488-F3D60EC61942}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joyle.Accounts.Domain.Tests", "Modules\Accounts\Joyle.Accounts.Domain.Tests\Joyle.Accounts.Domain.Tests.csproj", "{34EC1123-8603-4FA1-A8CD-9A550AC5DABE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Joyle.Accounts.Domain.Tests", "Modules\Accounts\Joyle.Accounts.Domain.Tests\Joyle.Accounts.Domain.Tests.csproj", "{34EC1123-8603-4FA1-A8CD-9A550AC5DABE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joyle.Games.Domain.Tests", "Modules\Games\Joyle.Games.Domain.Tests\Joyle.Games.Domain.Tests.csproj", "{A41D4E7F-A0E3-46AB-81D2-936DF06F5039}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -107,6 +109,10 @@ Global
 		{34EC1123-8603-4FA1-A8CD-9A550AC5DABE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34EC1123-8603-4FA1-A8CD-9A550AC5DABE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34EC1123-8603-4FA1-A8CD-9A550AC5DABE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A41D4E7F-A0E3-46AB-81D2-936DF06F5039}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A41D4E7F-A0E3-46AB-81D2-936DF06F5039}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A41D4E7F-A0E3-46AB-81D2-936DF06F5039}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A41D4E7F-A0E3-46AB-81D2-936DF06F5039}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -136,6 +142,7 @@ Global
 		{D90D60D0-24DF-4614-A4A8-D6C4BB7BB6B5} = {DBF414FD-E10C-44A3-93FF-4F4A82C8C4CC}
 		{291F9B92-1613-4C78-8488-F3D60EC61942} = {B5EDC5A9-2855-41CF-ADC5-7E9774CCA0FA}
 		{34EC1123-8603-4FA1-A8CD-9A550AC5DABE} = {3E88458E-33C2-47A2-8655-20885040DB09}
+		{A41D4E7F-A0E3-46AB-81D2-936DF06F5039} = {17090598-718B-4F71-913D-3ED5F1CA9FD7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9D83920C-F7E2-4353-89B5-CD6B9AFF051F}

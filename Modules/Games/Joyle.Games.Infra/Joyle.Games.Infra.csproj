@@ -1,7 +1,22 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.3.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="5.0.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.13" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Building Blocks\Joyle.BuildingBlocks.Application\Joyle.BuildingBlocks.Application.csproj" />
+    <ProjectReference Include="..\..\..\Building Blocks\Joyle.BuildingBlocks.Domain\Joyle.BuildingBlocks.Domain.csproj" />
+    <ProjectReference Include="..\..\..\Building Blocks\Joyle.BuildingBlocks.Infra\Joyle.BuildingBlocks.Infra.csproj" />
+    <ProjectReference Include="..\Joyle.Games.Application\Joyle.Games.Application.csproj" />
+    <ProjectReference Include="..\Joyle.Games.Domain\Joyle.Games.Domain.csproj" />
+  </ItemGroup>
 
 </Project>

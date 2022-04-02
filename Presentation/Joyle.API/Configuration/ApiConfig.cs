@@ -3,6 +3,7 @@ using Joyle.Accounts.Infra.Data;
 using Joyle.API.Configuration.Validation;
 using Joyle.BuildingBlocks.Application;
 using Joyle.BuildingBlocks.Domain;
+using Joyle.Games.Infra.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -21,7 +22,10 @@ namespace Joyle.API.Configuration
         public static void AddApiConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<AccountsContext>(options =>
-            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddDbContext<GamesContext>(options =>
+               options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             services.AddSwaggerGen(c =>
             {
