@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Joyle.Accounts.Application.UserRegistrations.SendUserRegistrationConfirmationEmail
 {
-    public class SendUserRegistrationConfirmationEmailCommandHandler : ICommandHandler<SendUserRegistrationConfirmationEmailCommand>
+    internal class SendUserRegistrationConfirmationEmailCommandHandler : ICommandHandler<SendUserRegistrationConfirmationEmailCommand>
     {
         private readonly IEmailSender _emailSender;
 

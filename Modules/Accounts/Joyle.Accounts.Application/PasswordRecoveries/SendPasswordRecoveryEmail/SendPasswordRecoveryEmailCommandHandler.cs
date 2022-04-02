@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Joyle.Accounts.Application.PasswordRecoveries.SendPasswordRecoveryEmail
 {
-    public class SendPasswordRecoveryEmailCommandHandler : ICommandHandler<SendPasswordRecoveryEmailCommand>
+    internal class SendPasswordRecoveryEmailCommandHandler : ICommandHandler<SendPasswordRecoveryEmailCommand>
     {
         private readonly IEmailSender _emailSender;
 

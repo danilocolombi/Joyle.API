@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Joyle.Accounts.Application.UserRegistrations.RegisterNewUser
 {
-    public class RegisterNewUserCommandHandler : ICommandHandler<RegisterNewUserCommand>
+    internal class RegisterNewUserCommandHandler : ICommandHandler<RegisterNewUserCommand>
     {
         private readonly IUserRegistrationRepository _repository;
 

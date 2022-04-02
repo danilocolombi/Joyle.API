@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Joyle.Accounts.Application.UserRegistrations.ConfirmUserRegistration
 {
-    public class ConfirmUserRegistrationCommandHandler : ICommandHandler<ConfirmUserRegistrationCommand>
+    internal class ConfirmUserRegistrationCommandHandler : ICommandHandler<ConfirmUserRegistrationCommand>
     {
         private IUserRegistrationRepository _userRegistrationRepository;
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Joyle.Accounts.Application.Users.ActivateUser
 {
-    public class ActivateUserCommandHandler : ICommandHandler<ActivateUserCommand>
+    internal class ActivateUserCommandHandler : ICommandHandler<ActivateUserCommand>
     {
         private readonly IUserRepository _userRepository;
 

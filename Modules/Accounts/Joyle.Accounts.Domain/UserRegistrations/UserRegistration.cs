@@ -12,7 +12,7 @@ namespace Joyle.Accounts.Domain.UserRegistrations
         public string Password { get; private set; }
         public DateTime RegistrationDate { get; private set; }
         public DateTime? ConfirmationDate { get; private set; }
-        public UserRegistrationStatus Status { get; set; }
+        public UserRegistrationStatus Status { get; private set; }
 
         protected UserRegistration() { }
 

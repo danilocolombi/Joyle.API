@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Joyle.Accounts.Application.Users.ChangeUsername
 {
-    public class ChangeUsernameCommandHandler : ICommandHandler<ChangeUsernameCommand>
+    internal class ChangeUsernameCommandHandler : ICommandHandler<ChangeUsernameCommand>
     {
         private readonly IUserRepository _userRepository;
 

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Joyle.Accounts.Application.PasswordRecoveries.RequestPasswordRecovery
 {
-    public class RequestPasswordRecoveryCommandHandler : ICommandHandler<RequestPasswordRecoveryCommand>
+    internal class RequestPasswordRecoveryCommandHandler : ICommandHandler<RequestPasswordRecoveryCommand>
     {
         private readonly IPasswordRecoveryRepository _passwordRecoveryRepository;
         private readonly IUserRepository _userRepository;

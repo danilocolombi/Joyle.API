@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Joyle.Accounts.Application.Authentication.Authenticate
 {
-    public class AuthenticateCommandHandler : ICommandHandler<AuthenticateCommand, AuthenticationResult>
+    internal class AuthenticateCommandHandler : ICommandHandler<AuthenticateCommand, AuthenticationResult>
     {
         private IUserRepository _userRepository;
 

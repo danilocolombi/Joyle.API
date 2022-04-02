@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Joyle.Accounts.Application.Users.ChangeUserPassword
 {
-    public class ChangeUserPasswordCommandHandler : ICommandHandler<ChangeUserPasswordCommand>
+    internal class ChangeUserPasswordCommandHandler : ICommandHandler<ChangeUserPasswordCommand>
     {
         private readonly IUserRepository _userRepository;
 

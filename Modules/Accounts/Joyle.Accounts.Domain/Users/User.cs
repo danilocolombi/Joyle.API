@@ -10,7 +10,7 @@ namespace Joyle.Accounts.Domain.Users
         public Email Email { get; private set; }
         public string Password { get; private set; }
         public bool IsActive { get; private set; }
-        public DateTime? InactivationDate { get; set; }
+        public DateTime? InactivationDate { get; private set; }
 
         protected User() { }
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Joyle.Accounts.Application.Users.InactivateUser
 {
-    public class InactivateUserCommandHandler : ICommandHandler<InactivateUserCommand>
+    internal class InactivateUserCommandHandler : ICommandHandler<InactivateUserCommand>
     {
         private readonly IUserRepository _userRepository;
 
