@@ -4,14 +4,16 @@ using Joyle.Accounts.Infra.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Joyle.Accounts.Infra.Migrations
 {
     [DbContext(typeof(AccountsContext))]
-    partial class AccountsContextModelSnapshot : ModelSnapshot
+    [Migration("20220704223629_ALTER_USER_TABLE_NAME")]
+    partial class ALTER_USER_TABLE_NAME
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

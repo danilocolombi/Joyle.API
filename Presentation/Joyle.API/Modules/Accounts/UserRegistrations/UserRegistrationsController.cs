@@ -24,7 +24,7 @@ namespace Joyle.API.Modules.Accounts.UserRegistrations
         [AllowAnonymous]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> RegisterNewUser(RegisterNewUserRequest request)
+        public async Task<IActionResult> RegisterNewUser([FromBody] RegisterNewUserRequest request)
         {
             await _mediator.ExecuteCommandAsync(new RegisterNewUserCommand(
                 request.Username,
@@ -39,7 +39,7 @@ namespace Joyle.API.Modules.Accounts.UserRegistrations
 
         [AllowAnonymous]
         [HttpPost("{id:Guid}")]
-        public async Task<IActionResult> ConfirmarCadastroUsuario(Guid id)
+        public async Task<IActionResult> ConfirmUserRegistration(Guid id)
         {
             await _mediator.ExecuteCommandAsync(new ConfirmUserRegistrationCommand(id));
 

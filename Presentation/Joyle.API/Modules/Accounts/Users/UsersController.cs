@@ -1,6 +1,7 @@
 ﻿using Joyle.Accounts.Application.Users.ActivateUser;
 using Joyle.Accounts.Application.Users.ChangeUsername;
 using Joyle.Accounts.Application.Users.ChangeUserPassword;
+using Joyle.Accounts.Application.Users.GetUser;
 using Joyle.Accounts.Application.Users.InactivateUser;
 using Joyle.API.Configuration.Authentication.Services;
 using Joyle.API.Modules.Accounts.Users.Requests;
@@ -68,6 +69,16 @@ namespace Joyle.API.Modules.Accounts.Users
                 request.NewPassword));
 
             return Ok();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetUser()
+        {
+            var id = _aspNetUser.GetId();
+
+            var usuario = await _mediator.ExecuteQueryAsync(new GetUserQuery(id));
+
+            return Ok(usuario);
         }
     }
 }

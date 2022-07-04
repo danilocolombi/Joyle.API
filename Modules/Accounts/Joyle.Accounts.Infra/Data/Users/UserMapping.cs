@@ -14,7 +14,7 @@ namespace Joyle.Accounts.Infra.Data.Users
             builder.Property(user => user.Id)
                 .ValueGeneratedNever();
 
-            builder.ToTable("User");
+            builder.ToTable("JoyleUser");
 
             builder.OwnsOne(user => user.Username, username =>
             {

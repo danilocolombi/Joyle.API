@@ -70,6 +70,12 @@ namespace Joyle.API.Configuration
                 x.Map<BusinessRuleValidationException>(ex => new BusinessRuleValidationExceptionProblemDetails(ex));
             });
 
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("Total", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            });
+            
             services.AddControllers();
         }
 
@@ -91,6 +97,7 @@ namespace Joyle.API.Configuration
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors("Total");
 
             app.UseAuthentication();
             app.UseAuthorization();
