@@ -8,7 +8,9 @@ namespace Joyle.Accounts.Application.Users.ChangeUsername
         public Guid UserId { get; }
         public string Username { get; }
 
-        public ChangeUsernameCommand(Guid userId, string username)
+        public ChangeUsernameCommand(
+            Guid userId,
+            string username)
         {
             UserId = userId;
             Username = username;

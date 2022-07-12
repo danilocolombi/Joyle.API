@@ -30,6 +30,7 @@ namespace Joyle.Accounts.Application.Authentication.Authenticate
             var authenticationResult = new AuthenticationResult(new LoginDto
             {
                 Email = user.Email.Address,
+                FullName = user.FullName,
                 Username = user.Username.Value,
                 IsActive = user.IsActive,
                 Id = user.Id

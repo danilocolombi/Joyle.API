@@ -72,5 +72,10 @@ namespace Joyle.Accounts.Domain.Users
         {
             this.Password = newPassword;
         }
+
+        public void Rename(string newFullName)
+        {
+            this.FullName = newFullName;
+        }
     }
 }

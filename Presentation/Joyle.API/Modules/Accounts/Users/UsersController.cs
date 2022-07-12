@@ -3,6 +3,7 @@ using Joyle.Accounts.Application.Users.ChangeUsername;
 using Joyle.Accounts.Application.Users.ChangeUserPassword;
 using Joyle.Accounts.Application.Users.GetUser;
 using Joyle.Accounts.Application.Users.InactivateUser;
+using Joyle.Accounts.Application.Users.RenameUser;
 using Joyle.API.Configuration.Authentication.Services;
 using Joyle.API.Modules.Accounts.Users.Requests;
 using Joyle.BuildingBlocks.Application.Mediator;
@@ -54,6 +55,18 @@ namespace Joyle.API.Modules.Accounts.Users
             await _mediator.ExecuteCommandAsync(new ChangeUsernameCommand(
                 id,
                 request.Username));
+
+            return Ok();
+        }
+
+        [HttpPatch("name")]
+        public async Task<IActionResult> RenameUser(RenameUserRequest request)
+        {
+            var id = _aspNetUser.GetId();
+
+            await _mediator.ExecuteCommandAsync(new RenameUserCommand(
+                id,
+                request.FullName));
 
             return Ok();
         }
