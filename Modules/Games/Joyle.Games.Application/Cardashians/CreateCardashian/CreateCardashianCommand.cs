@@ -4,7 +4,7 @@ using System;
 
 namespace Joyle.Games.Application.Cardashians.CreateCardashian
 {
-    public class CreateCardashianCommand : CommandBase
+    public class CreateCardashianCommand : CommandBase<Guid>
     {
         public string Title { get; }
         public bool IsPublic { get; }

@@ -36,13 +36,17 @@ namespace Joyle.API.Modules.Games.Cardashians
         {
             var authorId = _aspNetUser.GetId();
 
-            await _mediator.ExecuteCommandAsync(new CreateCardashianCommand(
-                request.Title,
-                request.IsPublic,
-                authorId));
+            var result = await _mediator.ExecuteCommandAsync(new CreateCardashianCommand(
+                   request.Title,
+                   request.IsPublic,
+                   authorId));
 
-            return Ok();
-        }        
+            return Ok(new
+            {
+                Success = true,
+                Data = result
+            });
+        }
 
         [HttpPatch("{id:Guid}/name")]
         public async Task<IActionResult> Rename(Guid id, [FromBody] RenameCardashianRequest request)

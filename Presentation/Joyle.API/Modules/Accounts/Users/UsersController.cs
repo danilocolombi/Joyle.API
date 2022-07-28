@@ -27,7 +27,7 @@ namespace Joyle.API.Modules.Accounts.Users
             _aspNetUser = aspNetUser;
         }
 
-        [HttpPatch("inactivation")]
+        [HttpPost("inactivation")]
         public async Task<IActionResult> Inactivate()
         {
             var id = _aspNetUser.GetId();

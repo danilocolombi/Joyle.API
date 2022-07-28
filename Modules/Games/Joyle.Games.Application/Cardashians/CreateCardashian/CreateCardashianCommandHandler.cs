@@ -1,13 +1,13 @@
 ﻿using Joyle.BuildingBlocks.Application.Messages;
 using Joyle.Games.Domain.Cardashians;
 using Joyle.Games.Domain.Cardashians.Interfaces;
-using MediatR;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Joyle.Games.Application.Cardashians.CreateCardashian
 {
-    public class CreateCardashianCommandHandler : ICommandHandler<CreateCardashianCommand>
+    public class CreateCardashianCommandHandler : ICommandHandler<CreateCardashianCommand, Guid>
     {
         private readonly ICardashianRepository _cardashianRepository;
 
@@ -16,7 +16,7 @@ namespace Joyle.Games.Application.Cardashians.CreateCardashian
             _cardashianRepository = cardashianRepository;
         }
 
-        public async Task<Unit> Handle(CreateCardashianCommand request, CancellationToken cancellationToken)
+        public async Task<Guid> Handle(CreateCardashianCommand request, CancellationToken cancellationToken)
         {
             var cardashian = Cardashian.NewCardashian(request.Title, request.IsPublic, request.AuthorId);
 
@@ -24,7 +24,7 @@ namespace Joyle.Games.Application.Cardashians.CreateCardashian
 
             await _cardashianRepository.UnitOfWork.Commit();
 
-            return Unit.Value;
+            return cardashian.Id;
         }
     }
 }
