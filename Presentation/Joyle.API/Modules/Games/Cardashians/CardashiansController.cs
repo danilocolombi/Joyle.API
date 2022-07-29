@@ -6,6 +6,7 @@ using Joyle.Games.Application.Cardashians.ChangeCardashianCardDescription;
 using Joyle.Games.Application.Cardashians.ChangeCardashianCardPosition;
 using Joyle.Games.Application.Cardashians.CreateCardashian;
 using Joyle.Games.Application.Cardashians.DeleteCardashian;
+using Joyle.Games.Application.Cardashians.GetCardashian;
 using Joyle.Games.Application.Cardashians.RemoveCardashianCard;
 using Joyle.Games.Application.Cardashians.RenameCardashian;
 using Joyle.Games.Application.Cardashians.TurnCardashianPrivate;
@@ -149,6 +150,15 @@ namespace Joyle.API.Modules.Games.Cardashians
                 cardId));
 
             return Ok();
+        }
+
+        [AllowAnonymous]
+        [HttpGet("{id:Guid}")]
+        public async Task<IActionResult> GetUser(Guid id)
+        {
+            var cardashian = await _mediator.ExecuteQueryAsync(new GetCardashianQuery(id));
+
+            return Ok(cardashian);
         }
     }
 }
